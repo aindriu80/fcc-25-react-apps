@@ -1,0 +1,22 @@
+.star-rating-container {
+  display: flex;
+  justify-content: center;
+}
+
+.component-title {
+  font-size: 20px;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5vh; /* Adjust as needed for vertical positioning */
+}
+
+.active {
+  color: #fff700;
+}
+
+.inactive {
+  color: #000000;
+}
