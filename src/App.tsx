@@ -1,7 +1,8 @@
-import Accordian from './components/accordian/Accordian';
-import RandomColour from './components/randomColour/randomColour';
-import StarRating from './components/starRating/StarRating';
-import ImageSlider from './components/imageSlider/imageSlider';
+import Accordian from './components/Accordian/Accordian';
+import RandomColour from './components/RandomColour/RandomColour';
+import StarRating from './components/StarRating/StarRating';
+import ImageSlider from './components/ImageSlider/ImageSlider';
+import LoadMoreData from './components/LoadMoreData/LoadMoreData';
 
 function App() {
   return (
@@ -9,11 +10,14 @@ function App() {
       {/* <Accordian /> */}
       {/* <RandomColour /> */}
       {/* <StarRating /> */}
-      <ImageSlider
-        url={`https://picsum.photos/v2/list`}
-        page={'1'}
-        limit={'4'}
-      />
+
+      {/* <ImageSlider */}
+      {/*   url={`https://picsum.photos/v2/list`} */}
+      {/*   page={'1'} */}
+      {/*   limit={'4'} */}
+      {/* /> */}
+
+      <LoadMoreData />
     </div>
   );
 }
