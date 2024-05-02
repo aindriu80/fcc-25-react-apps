@@ -3,6 +3,8 @@ import RandomColour from './components/RandomColour/RandomColour';
 import StarRating from './components/StarRating/StarRating';
 import ImageSlider from './components/ImageSlider/ImageSlider';
 import LoadMoreData from './components/LoadMoreData/LoadMoreData';
+import SideMenu from './components/SideMenu/SideMenu';
+import menus from './components/SideMenu/data.js';
 
 function App() {
   return (
@@ -17,7 +19,8 @@ function App() {
       {/*   limit={'4'} */}
       {/* /> */}
 
-      <LoadMoreData />
+      {/* <LoadMoreData /> */}
+      <SideMenu menus={menus} />
     </div>
   );
 }
