@@ -5,6 +5,7 @@ import ImageSlider from './components/ImageSlider/ImageSlider';
 import LoadMoreData from './components/LoadMoreData/LoadMoreData';
 import SideMenu from './components/SideMenu/SideMenu';
 import menus from './components/SideMenu/data.js';
+import QRCodeGenerator from './components/QRCodeGenerator/QRCodeGenerator';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
       {/* /> */}
 
       {/* <LoadMoreData /> */}
-      <SideMenu menus={menus} />
+      {/* <SideMenu menus={menus} /> */}
+      <QRCodeGenerator />
     </div>
   );
 }
