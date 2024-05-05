@@ -7,6 +7,7 @@ import SideMenu from './components/SideMenu/SideMenu';
 import menus from './components/SideMenu/data.js';
 import QRCodeGenerator from './components/QRCodeGenerator/QRCodeGenerator';
 import LightDarkMode from './components/LightDarkMode/LightDarkMode';
+import CustomScrollIndicator from './components/CustomScrollIndicator/CustomScrollIndicator';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
       {/* <LoadMoreData /> */}
       {/* <SideMenu menus={menus} /> */}
       {/* <QRCodeGenerator /> */}
-      <LightDarkMode />
+      {/* <LightDarkMode /> */}
+      <CustomScrollIndicator url={'https://dummyjson.com/products?limit=100'} />
     </div>
   );
 }
