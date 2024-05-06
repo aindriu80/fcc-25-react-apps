@@ -8,6 +8,7 @@ import menus from './components/SideMenu/data.js';
 import QRCodeGenerator from './components/QRCodeGenerator/QRCodeGenerator';
 import LightDarkMode from './components/LightDarkMode/LightDarkMode';
 import CustomScrollIndicator from './components/CustomScrollIndicator/CustomScrollIndicator';
+import TabTest from './components/CustomTabs/TabTest';
 
 function App() {
   return (
@@ -15,18 +16,17 @@ function App() {
       {/* <Accordian /> */}
       {/* <RandomColour /> */}
       {/* <StarRating /> */}
-
       {/* <ImageSlider */}
       {/*   url={`https://picsum.photos/v2/list`} */}
       {/*   page={'1'} */}
       {/*   limit={'4'} */}
       {/* /> */}
-
       {/* <LoadMoreData /> */}
       {/* <SideMenu menus={menus} /> */}
       {/* <QRCodeGenerator /> */}
       {/* <LightDarkMode /> */}
-      <CustomScrollIndicator url={'https://dummyjson.com/products?limit=100'} />
+      {/* <CustomScrollIndicator url={'https://dummyjson.com/products?limit=100'} /> */}
+      <TabTest />
     </div>
   );
 }
