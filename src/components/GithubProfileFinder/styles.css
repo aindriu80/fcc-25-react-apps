@@ -1,0 +1,44 @@
+.github-profile-container,
+.loading {
+  padding: 20px;
+  text-align: center;
+}
+
+.input-wrapper {
+  /* border: 2px solid #008cba; */
+}
+
+.search-by-username {
+  font: #000;
+}
+
+.user-profile {
+  padding: 20px;
+}
+
+.avatar {
+  margin-left: 255px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+}
+
+.heading {
+  font-weight: 600;
+}
+
+.button {
+  color: #000;
+  padding: 12px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  color: black;
+  border: 2px solid #008cba;
+  border-radius: 20px;
+}
