@@ -1,0 +1,9 @@
+.search-autocomplete-container,
+.loading {
+  padding: 20px;
+  text-align: center;
+}
+
+.input-wrapper {
+  border: 2px solid #008cba;
+}
