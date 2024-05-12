@@ -13,6 +13,8 @@ import ModalTest from './components/CustomModal/ModalTest';
 import GithubProfileFinder from './components/GithubProfileFinder/GithubProfileFinder';
 import SearchAutoComplete from './components/SearchAutoComplete/SearchAutoComplete';
 import TickTacToe from './components/TickTacToe/TickTacToe';
+import FeatureFlag from './components/FeatureFlag/FeatureFlag';
+import FeatureFlagGlobalState from './components/FeatureFlag/Context';
 
 function App() {
   return (
@@ -34,7 +36,10 @@ function App() {
       {/* <ModalTest /> */}
       {/* <GithubProfileFinder /> */}
       {/* <SearchAutoComplete /> */}
-      <TickTacToe />
+      {/* <TickTacToe /> */}
+      <FeatureFlagGlobalState>
+        <FeatureFlag />
+      </FeatureFlagGlobalState>
     </div>
   );
 }
