@@ -27,7 +27,6 @@ const SearchAutoComplete = () => {
   }
 
   function handleClick(event) {
-    console.log(event.target.innerText);
     setShowDropdown(false);
     setSearchParam(event.target.innerText);
     setFilteredUsers([]);
@@ -36,7 +35,8 @@ const SearchAutoComplete = () => {
   async function fetchListOfUsers() {
     try {
       setLoading(true);
-      const response = await fetch('https://dummyjson.com/users');
+      // const response = await fetch('https://dummyjson.com/users');
+      const response = await fetch('./dummyjson.json');
       const data = await response.json();
 
       if (data && data.users && data.users.length) {
@@ -53,8 +53,6 @@ const SearchAutoComplete = () => {
   useEffect(() => {
     fetchListOfUsers();
   }, []);
-
-  console.log(users, filteredUsers);
 
   return (
     <div className="search-autocomplete-container">

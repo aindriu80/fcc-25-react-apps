@@ -4,6 +4,7 @@ import RandomColourGenerator from '../RandomColour/RandomColour';
 import Accordian from '../Accordian/Accordian';
 import { useContext } from 'react';
 import { FeatureFlagsContext } from './Context';
+import SearchAutoComplete from '../SearchAutoComplete/SearchAutoComplete';
 
 const FeatureFlag = () => {
   const { loading, enabledFlags } = useContext(FeatureFlagsContext);
@@ -23,6 +24,10 @@ const FeatureFlag = () => {
     {
       key: 'showAccordian',
       component: <Accordian />,
+    },
+    {
+      key: 'SearchAutoComplete',
+      component: <SearchAutoComplete />,
     },
   ];
 

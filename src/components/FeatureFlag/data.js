@@ -4,6 +4,7 @@ const dummyAPIResponse = {
   randomColourGenerator: false,
   showAccordian: false,
   showTreeView: true,
+  SearchAutoComplete: true,
 };
 
 function featureFlagsDataServiceCall() {
