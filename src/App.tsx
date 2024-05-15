@@ -16,6 +16,7 @@ import TickTacToe from './components/TickTacToe/TickTacToe';
 import FeatureFlag from './components/FeatureFlag/FeatureFlag';
 import FeatureFlagGlobalState from './components/FeatureFlag/Context';
 import UseFetchHookTest from './components/CustomHook/Test';
+import UseOnClickOutsideTest from './components/UseOutsideClick/UseOnClickOutsideTest';
 
 function App() {
   return (
@@ -43,7 +44,8 @@ function App() {
       {/*   <FeatureFlag /> */}
       {/* </FeatureFlagGlobalState> */}
 
-      <UseFetchHookTest />
+      {/* <UseFetchHookTest /> */}
+      <UseOnClickOutsideTest />
     </div>
   );
 }
