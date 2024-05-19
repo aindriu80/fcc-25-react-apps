@@ -20,6 +20,7 @@ import UseOnClickOutsideTest from './components/UseOutsideClick/UseOnClickOutsid
 import TestUseWindowResize from './components/UseWindowResize/TestUseWindowResize';
 import ScrollTopToBottom from './components/ScrollTopToBottom/ScrollTopToBottom';
 import ScrollToSection from './components/ScrollToSection/ScrollToSection';
+import WeatherApplication from './components/WeatherApplication/WeatherApplication';
 
 function App() {
   return (
@@ -51,7 +52,8 @@ function App() {
       {/* <UseOnClickOutsideTest /> */}
       {/* <TestUseWindowResize /> */}
       {/* <ScrollTopToBottom /> */}
-      <ScrollToSection />
+      {/* <ScrollToSection /> */}
+      <WeatherApplication />
     </div>
   );
 }
