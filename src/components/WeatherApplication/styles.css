@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.search-engine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.search-engine input {
+  height: 45px;
+  width: 500px;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 2px 15px;
+  font-size: 16px;
+  outline: none;
+  background-color: #ffffff;
+  color: #555555;
+}
+
+.search-engine button {
+  margin: 10px;
+}

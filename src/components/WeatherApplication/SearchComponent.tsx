@@ -1,9 +1,10 @@
+import './styles.css';
+
 const SearchComponent = ({ search, setSearch, handleSearch }) => {
   return (
     <div className="search-engine">
       <input
         type="text"
-        className="city-search"
         placeholder="Enter City Name"
         name="search"
         value={search}
