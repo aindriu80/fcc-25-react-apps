@@ -13,7 +13,7 @@ const WeatherApplication = () => {
 
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${WeatherAPIKey}`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${WeatherAPIKey}&units=metric`,
       );
 
       const data = await response.json();
@@ -47,14 +47,14 @@ const WeatherApplication = () => {
   }, []);
 
   return (
-    <div>
+    <div className="weather-application">
       <SearchComponent
         search={search}
         setSearch={setSearch}
         handleSearch={handleSearch}
       />
       {loading ? (
-        <div>Loading....</div>
+        <div className="loading">Loading....</div>
       ) : (
         <div className="">
           <div className="city-name">
@@ -65,12 +65,26 @@ const WeatherApplication = () => {
           <div className="date">
             <span>{getCurrentDate()}</span>
           </div>
-          <div>{weatherData?.main?.temp}</div>
+          <div className="temperature">{weatherData?.main?.temp}°c</div>
           <p className="description">
             {weatherData && weatherData.weather && weatherData.weather[0]
               ? weatherData.weather[0].description
               : ''}
           </p>
+          <div className="weather-info">
+            <div className="column">
+              <div className="">
+                <p className="wind">{weatherData?.wind?.speed}km/h</p>
+                <p className="">Wind Speed</p>
+              </div>
+            </div>
+            <div className="column">
+              <div className="">
+                <p className="humidty">{weatherData?.main?.humidity}%</p>
+                <p className="">Humidity</p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
