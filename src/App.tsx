@@ -21,6 +21,7 @@ import TestUseWindowResize from './components/UseWindowResize/TestUseWindowResiz
 import ScrollTopToBottom from './components/ScrollTopToBottom/ScrollTopToBottom';
 import ScrollToSection from './components/ScrollToSection/ScrollToSection';
 import WeatherApplication from './components/WeatherApplication/WeatherApplication';
+import FoodRecipe from './components/FoodRecipe/Home/FoodRecipe';
 
 function App() {
   return (
@@ -53,7 +54,8 @@ function App() {
       {/* <TestUseWindowResize /> */}
       {/* <ScrollTopToBottom /> */}
       {/* <ScrollToSection /> */}
-      <WeatherApplication />
+      {/* <WeatherApplication /> */}
+      <FoodRecipe />
     </div>
   );
 }
