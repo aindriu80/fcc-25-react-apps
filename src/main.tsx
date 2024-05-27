@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import GlobalState from './components/FoodRecipe/Context/Index';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <GlobalState>
+        <App />
+      </GlobalState>
     </React.StrictMode>
   </BrowserRouter>,
 );
