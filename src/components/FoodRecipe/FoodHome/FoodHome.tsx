@@ -1,18 +1,23 @@
-import { Route, Routes } from 'react-router-dom';
-import Details from '../Details/Details';
-import Favorites from '../Favorites/Favorites';
-import Navbar from '../Navbar/Navbar';
+import { useContext } from 'react';
+import { GlobalContext } from '../Context/Index';
+import RecipeItem from '../RecipeItem/RecipeItem';
 
 const FoodHome = () => {
+  const { recipeList, loading } = useContext(GlobalContext);
+
+  if (loading) return <div>Loading...Please wait!</div>;
+
   return (
-    <div className="min-h-screen p-6 bg-white text-gray-600 text-lg">
-      <Navbar />
-      <Routes>
-        {/* <Route path="/" element={<FoodRecipe />} /> */}
-        <Route path="/recipe-item/:id" element={<Details />}></Route>
-        <Route path="/" element={<Favorites />}></Route>
-      </Routes>
-      FoodRecipe
+    <div className="py-8 container mx-auto flex flex-wrap justify-center gap-10">
+      {recipeList && recipeList.length > 0 ? (
+        recipeList.map((item: any) => <RecipeItem item={item} />)
+      ) : (
+        <div>
+          <p className="lg:text-4xl text-xl text-center text-black font-extrabold">
+            Nothing to show. Please search something
+          </p>
+        </div>
+      )}
     </div>
   );
 };
