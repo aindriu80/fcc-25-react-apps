@@ -4,11 +4,10 @@ import { GlobalContext } from '../Context/Index';
 
 const Details = () => {
   const { id } = useParams();
-  const { recipeDetailsData, setRecipeDetailsData } = useContext(GlobalContext);
+  const { recipeDetailsData, setRecipeDetailsData, handleAddToFavorite } =
+    useContext(GlobalContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  console.log(id);
 
   useEffect(() => {
     async function getRecipeDetails() {
@@ -62,6 +61,31 @@ const Details = () => {
         <h3 className="font-bold text-2xl truncate text-black">
           {recipeDetailsData?.recipe?.title}
         </h3>
+        <div>
+          <button
+            onClick={() => handleAddToFavorite()}
+            className="p-3 px-8 rounded-lg text-sm uppercase font-medium track-wider mt-3 inline-block shadow-md bg-black text-white"
+          >
+            Save as favorites
+          </button>
+        </div>
+        <div>
+          <span className="text-2xl font-semibold text-black">
+            Ingredients:
+          </span>
+          <ul className="flex flex-col gap-3">
+            {recipeDetailsData?.recipe?.ingredients.map((ingredient: any) => (
+              <li>
+                <span className="text-2xl font-semibold text-black">
+                  {ingredient.quantity} {ingredient.unit}
+                </span>
+                <span className="text-2xl font-semibold text-black">
+                  {ingredient.description}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
