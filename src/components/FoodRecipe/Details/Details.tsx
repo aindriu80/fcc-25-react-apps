@@ -4,8 +4,13 @@ import { GlobalContext } from '../Context/Index';
 
 const Details = () => {
   const { id } = useParams();
-  const { recipeDetailsData, setRecipeDetailsData, handleAddToFavorite } =
-    useContext(GlobalContext);
+  const {
+    recipeDetailsData,
+    setRecipeDetailsData,
+    favoritesList,
+    handleAddToFavorite,
+  } = useContext(GlobalContext);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -63,9 +68,16 @@ const Details = () => {
         </h3>
         <div>
           <button
-            onClick={() => handleAddToFavorite()}
+            onClick={() => handleAddToFavorite(recipeDetailsData?.recipe)}
             className="p-3 px-8 rounded-lg text-sm uppercase font-medium track-wider mt-3 inline-block shadow-md bg-black text-white"
           >
+            {favoritesList &&
+            favoritesList.length > 0 &&
+            favoritesList.findIndex(
+              (item) => item.id === recipeDetailsData?.recipe?.id,
+            ) !== 1
+              ? 'Remove from favorites'
+              : 'Add to favorites'}
             Save as favorites
           </button>
         </div>

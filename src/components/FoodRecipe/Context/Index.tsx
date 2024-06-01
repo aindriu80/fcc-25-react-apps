@@ -1,15 +1,29 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, ReactNode, ReactElement } from 'react';
 
-export const GlobalContext = createContext(null);
+interface GlobalContextType {
+  searchParam: string;
+  loading: boolean;
+  recipeList: any[];
+  recipeDetailsData: any;
+  setSearchParam: (param: string) => void;
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  setRecipeDetailsData: (data: any) => void;
+}
 
-export default function GlobalState({ children }) {
+export const GlobalContext = createContext<GlobalContextType | null>(null);
+
+export default function GlobalState({
+  children,
+}: {
+  children: ReactNode;
+}): ReactElement {
   const [searchParam, setSearchParam] = useState('');
   const [loading, setLoading] = useState(false);
   const [recipeList, setRecipeList] = useState([]);
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
   const [favouritesList, setFavouritesList] = useState([]);
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
     try {
