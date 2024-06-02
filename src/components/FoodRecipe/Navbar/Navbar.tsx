@@ -32,7 +32,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to={'/Favorites'}
+            to={'/favorites'}
             className="text-black hover:text-gray-700 duration-300"
           >
             Favorites

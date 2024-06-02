@@ -21,10 +21,9 @@ const Details = () => {
           `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`,
         );
         const data = await response.json();
-        console.log('Fetched data:', data);
 
-        if (data?.data?.recipes?.length > 0) {
-          setRecipeDetailsData(data.recipe);
+        if (data?.data) {
+          setRecipeDetailsData(data.data);
           setLoading(false);
         } else {
           throw new Error('No recipes found');
@@ -36,24 +35,25 @@ const Details = () => {
       }
     }
     getRecipeDetails();
-  }, [id]);
-
-  console.log('Recipe details:', recipeDetailsData);
+  }, [id, setRecipeDetailsData]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error loading recipe details: {error.message}</div>;
+    return <div>Error loading recipe details: {error}</div>;
   }
 
   return (
-    <div className="container mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div
+      key={recipeDetailsData?.recipe?.id}
+      className="container mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 gap-10"
+    >
       <div className="row-start-2 lg:row-start-auto">
         <div className="h-96 overflow-hidden rounded-xl group">
           <img
-            src={recipeDetailsData.image_url}
+            src={recipeDetailsData?.recipe?.image_url}
             className="w-full h-full object-cover block ground-hover:scale-105 duration-300"
             alt="Recipe"
           />
@@ -74,11 +74,10 @@ const Details = () => {
             {favoritesList &&
             favoritesList.length > 0 &&
             favoritesList.findIndex(
-              (item) => item.id === recipeDetailsData?.recipe?.id,
-            ) !== 1
+              (item: any) => item.id === recipeDetailsData?.recipe?.id,
+            ) !== -1
               ? 'Remove from favorites'
               : 'Add to favorites'}
-            Save as favorites
           </button>
         </div>
         <div>

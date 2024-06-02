@@ -6,7 +6,7 @@ export default function RecipeItem({ item }) {
       <div className="h-40 flex-center overflow-hidden items-center rounded-xl">
         <img src={item?.image_url} alt="recipe item" className="block w-full" />
       </div>
-      <div className="x">
+      <div className="">
         <span className="text-sm text-cyan-700 font-medium">
           {item?.publisher}
         </span>

@@ -10,7 +10,7 @@ const FoodRecipe = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<FoodHome />} />
-        <Route path="/favourites" element={<Favorites />}></Route>
+        <Route path="/favorites" element={<Favorites />}></Route>
         <Route path="/recipe-item/:id" element={<Details />}></Route>
       </Routes>
     </div>

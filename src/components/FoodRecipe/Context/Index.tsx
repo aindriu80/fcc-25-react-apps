@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode, ReactElement } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 interface GlobalContextType {
   searchParam: string;
   loading: boolean;
@@ -8,9 +8,21 @@ interface GlobalContextType {
   setSearchParam: (param: string) => void;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   setRecipeDetailsData: (data: any) => void;
+  favoritesList: any[];
+  handleAddToFavorite: any;
 }
 
-export const GlobalContext = createContext<GlobalContextType | null>(null);
+export const GlobalContext = createContext<GlobalContextType>({
+  searchParam: '',
+  loading: false,
+  recipeList: [],
+  recipeDetailsData: null,
+  setSearchParam: () => {},
+  handleSubmit: () => {},
+  setRecipeDetailsData: () => {},
+  favoritesList: [],
+  handleAddToFavorite: () => {},
+});
 
 export default function GlobalState({
   children,
@@ -19,9 +31,11 @@ export default function GlobalState({
 }): ReactElement {
   const [searchParam, setSearchParam] = useState('');
   const [loading, setLoading] = useState(false);
-  const [recipeList, setRecipeList] = useState([]);
-  const [recipeDetailsData, setRecipeDetailsData] = useState(null);
-  const [favouritesList, setFavouritesList] = useState([]);
+  const [recipeList, setRecipeList] = useState<any[]>([]);
+  const [recipeDetailsData, setRecipeDetailsData] = useState<any>(null);
+  const [favoritesList, setFavouritesList] = useState([]);
+
+  const navigate = useNavigate();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,6 +50,7 @@ export default function GlobalState({
         setRecipeList(data.data.recipes);
         setLoading(false);
         setSearchParam('');
+        navigate('/');
       }
     } catch (error) {
       console.error(error);
@@ -45,8 +60,7 @@ export default function GlobalState({
   }
 
   function handleAddToFavorite(getCurrentItem) {
-    console.log(getCurrentItem);
-    let cpyFavoritesList = [...favouritesList];
+    let cpyFavoritesList = [...favoritesList];
     const index = cpyFavoritesList.findIndex(
       (item) => item.id === getCurrentItem.id,
     );
@@ -60,8 +74,6 @@ export default function GlobalState({
     setFavouritesList(cpyFavoritesList);
   }
 
-  console.log(loading, recipeList, favouritesList);
-
   return (
     <GlobalContext.Provider
       value={{
@@ -73,7 +85,7 @@ export default function GlobalState({
         setSearchParam,
         handleSubmit,
         handleAddToFavorite,
-        favouritesList,
+        favoritesList,
       }}
     >
       {children}
