@@ -22,6 +22,7 @@ import ScrollTopToBottom from './components/ScrollTopToBottom/ScrollTopToBottom'
 import ScrollToSection from './components/ScrollToSection/ScrollToSection';
 import WeatherApplication from './components/WeatherApplication/WeatherApplication';
 import FoodRecipe from './components/FoodRecipe/Index';
+import ShoppingCartHome from './components/ShoppingCart/Index';
 
 function App() {
   return (
@@ -55,7 +56,8 @@ function App() {
       {/* <ScrollTopToBottom /> */}
       {/* <ScrollToSection /> */}
       {/* <WeatherApplication /> */}
-      <FoodRecipe />
+      {/* <FoodRecipe /> */}
+      <ShoppingCartHome />
     </div>
   );
 }
