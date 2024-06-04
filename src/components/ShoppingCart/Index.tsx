@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
+import Header from './Components/Header/Index';
 import Cart from './Pages/Cart';
 import Home from './Pages/Home';
 
 const ShoppingCartHome = () => {
   return (
-    <div className="min-h-screen p-6 bg-white text-gray-600 text-lg">
-      <h1>Navbar</h1>
+    <div>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
