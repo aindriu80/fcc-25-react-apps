@@ -1,16 +1,16 @@
-import { useDispatch } from "react-redux";
-import { addToCart } from '../../Store/Slices/CardSlice'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, removeFromCart } from '../../Store/Slices/CardSlice';
 
 const ProductTile = ({ product }) => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state);
 
   function handleAddToCart() {
-    dispatch(addToCart(product))
-
-
-
+    dispatch(addToCart(product));
+  }
+  function handleRemoveFromCart() {
+    console.log('removed');
+    dispatch(removeFromCart(product.id));
   }
 
   return (
@@ -29,8 +29,17 @@ const ProductTile = ({ product }) => {
           </h1>
         </div>
         <div className="flex items-center justify-center w-full mt-5">
-          <button onClick={handleAddToCart} className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
-            Add to cart
+          <button
+            onClick={
+              cart.some((item: any) => item.id === product.id)
+                ? handleRemoveFromCart
+                : handleAddToCart
+            }
+            className="bg-red-950 text-white border-2 rounded-lg font-bold p-4"
+          >
+            {cart.some((item: any) => item.id === product.id)
+              ? 'Remove from cart'
+              : 'Add to cart'}
           </button>
         </div>
       </div>
