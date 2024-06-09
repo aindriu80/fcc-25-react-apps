@@ -25,10 +25,10 @@ const Home = () => {
   return (
     <div>
       {loading ? (
-        <div className="min-h-screen w-full flex-justify-center items-center">
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-gray-200 bg-opacity-75">
           <Circles
-            height={'120'}
-            width={'120'}
+            height={'120px'}
+            width={'120px'}
             color="rgb( 127,29,29 ) visible={true}"
           />
         </div>
