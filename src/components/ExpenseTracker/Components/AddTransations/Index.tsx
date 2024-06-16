@@ -20,14 +20,14 @@ const TransactionForm = ({ onClose, isOpen }) => {
   const { formData, setFormData, value, setValue, handleFormSubmit } =
     useContext(GlobalContext);
 
-  function handleFormChange(event) {
+  function handleFormChange(event: any) {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
     });
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(event: any) {
     event.preventDefault();
     handleFormSubmit(formData);
   }
