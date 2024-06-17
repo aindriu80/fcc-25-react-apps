@@ -55,6 +55,7 @@ const TransactionForm = ({ onClose, isOpen }) => {
                 placeholder="Enter transaction amount"
                 name="amount"
                 type="number"
+                onChange={handleFormChange}
               />
             </FormControl>
             <RadioGroup mt="5" value={value} onChange={setValue}>

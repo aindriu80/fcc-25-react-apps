@@ -79,7 +79,7 @@ const Summary = ({ onClose, isOpen, totalExpense, totalIncome }) => {
           justifyContent={'center'}
         >
           <Heading>
-            <TransactionChart expense={1000} income={10000} />
+            <TransactionChart expense={totalExpense} income={totalIncome} />
           </Heading>
         </Box>
       </Flex>
