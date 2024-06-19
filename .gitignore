@@ -57,6 +57,8 @@ src/components/MernBlog/client/yarn-error.log*
 # Server
 
 
+src/components/MernBlog/server/.env
+
 #logs
 src/components/MernBlog/server/_.log
 src/components/MernBlog/server/npm-debug.log_
