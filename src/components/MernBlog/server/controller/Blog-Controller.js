@@ -84,13 +84,13 @@ const updateABlog = async (req, res) => {
     return res.send(500).json({
       message: 'Something went wrong while updating, please try again',
     });
-
-    if (!currentBlogToUpdate) {
-      return res.status(500).json({ message: 'Unable to update' });
-    }
-
-    return res.send(200).json({ message: 'Unable to update' });
   }
+
+  if (!currentBlogToUpdate) {
+    return res.status(500).json({ message: 'Unable to update' });
+  }
+
+  return res.send(200).json({ message: 'Unable to update' });
 };
 
-modules.exports = { fetchListOfBlogs, deleteABlog, updateABlog, addNewBlog };
+module.exports = { fetchListOfBlogs, deleteABlog, updateABlog, addNewBlog };
