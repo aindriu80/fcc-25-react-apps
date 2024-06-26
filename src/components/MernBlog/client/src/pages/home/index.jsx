@@ -4,10 +4,12 @@ import { GlobalContext } from '../../context';
 import axios from 'axios';
 import classes from './styles.module.css';
 import { FaTrash, FaEdit } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const { blogList, setBlogList, pending, setPending } =
     useContext(GlobalContext);
+  const navigate = useNavigate();
 
   async function fetchListOfBlogs() {
     setPending(true);
@@ -24,8 +26,6 @@ const Home = () => {
   }
 
   async function handleDeleteBlog(getCurrentId) {
-    console.log('currentId: ', getCurrentId);
-
     const response = await axios.delete(
       `http://localhost:5000/api/blogs/delete/${getCurrentId}`,
     );
@@ -36,7 +36,9 @@ const Home = () => {
     }
   }
 
-  async function handleEditBlog() {}
+  async function handleEditBlog(getCurrentBlogItem) {
+    navigate('/add-blog', { state: { getCurrentBlogItem } });
+  }
 
   useEffect(() => {
     fetchListOfBlogs();
@@ -54,10 +56,7 @@ const Home = () => {
               <div key={blogItem._id}>
                 <p>{blogItem.title}</p>
                 <p>{blogItem.description}</p>
-                <FaEdit
-                  onClick={() => handleEditBlog(blogItem._id)}
-                  size={30}
-                />
+                <FaEdit onClick={() => handleEditBlog(blogItem)} size={30} />
                 <FaTrash
                   size={30}
                   onClick={() => handleDeleteBlog(blogItem._id)}

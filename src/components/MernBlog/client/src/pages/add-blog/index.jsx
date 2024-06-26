@@ -1,36 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import { GlobalContext } from '../../context';
 import axios from 'axios';
 import classes from './styles.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const AddNewBlog = () => {
-  const { formData, setFormData } = useContext(GlobalContext);
-  const navigation = useNavigate();
-  console.log(formData);
+  const { formData, setFormData, setIsEdit, isEdit } =
+    useContext(GlobalContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   async function handleSaveBlogToDatabase() {
-    const response = await axios.post('http://localhost:5000/api/blogs/add', {
-      title: formData.title,
-      description: formData.description,
-    });
+    const response = isEdit
+      ? await axios.put(
+          `http://localhost:5000/api/blogs/update/${location.state.getCurrentBlogItem._id}`,
+          {
+            title: formData.title,
+            description: formData.description,
+          },
+        )
+      : await axios.post('http://localhost:5000/api/blogs/add', {
+          title: formData.title,
+          description: formData.description,
+        });
 
     const result = await response.data;
-    console.log(result);
-
     if (result) {
+      setIsEdit(false);
       setFormData({
         title: '',
         description: '',
       });
-      navigation('/');
+      navigate('/');
     }
   }
 
+  useEffect(() => {
+    console.log(location);
+    if (location.state) {
+      const { getCurrentBlogItem } = location.state;
+      setIsEdit(true);
+      setFormData({
+        title: getCurrentBlogItem.title,
+        description: getCurrentBlogItem.description,
+      });
+    }
+  }, [location]);
+
   return (
     <div className={classes.wrapper}>
-      <h1>Add New Blog</h1>
+      <h1>{isEdit ? 'Edit a Blog' : 'Add New Blog'}</h1>
       <div className={classes.formWrapper}>
         <textarea
           name="title"
@@ -57,7 +77,9 @@ const AddNewBlog = () => {
             })
           }
         />
-        <button onClick={handleSaveBlogToDatabase}>Add New Blog</button>
+        <button onClick={handleSaveBlogToDatabase}>
+          {isEdit ? 'Edit Blog' : 'Add New Blog'}
+        </button>
       </div>
     </div>
   );
